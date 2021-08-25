@@ -1,0 +1,70 @@
+<p>This driver!</p>
+{{formDriver.value | json}}
+
+<p>drivers!</p>
+<table>
+        <tr>
+            <th>id</th>
+        </tr>
+
+        <tr *ngFor="let driver of drivers">
+            <td>{{driver.id}}</td>
+            <p-button label="Mostrar" (click)="selectDriver(driver)"></p-button>
+            <p-button label="Eliminar" (click)="deleteDriver(driver)"></p-button>
+        </tr>
+<table>
+
+
+    
+<p-card>
+    <ng-template pTemplate="header">
+        <h1>Driver</h1>
+    </ng-template>
+    <ng-template pTemplate="footer">
+        <div>
+            <form [formGroup]="formDriver" (ngSubmit)="onSubmit(formDriver.value)">
+                <div class="p-field">
+                    <label for="id">ID:</label>
+                    <input pInputText type="text" id="user_id" formControlName="user_id">
+                </div>
+                <div class="p-field">
+                    <label for="id">PHOTO:</label>
+                    <input pInputText type="text" id="photo" formControlName="photo">
+                    <div *ngIf="photoField.invalid && 
+                        (photoField.touched ||
+                        photoField.dirty)">
+                        <small *ngIf="photoField.errors?.required" class="p-error">
+                            Campo requerido!
+                        </small>
+                        <small *ngIf="photoField.errors?.minlength" class="p-error">
+                            No cumple con caracteres los suficientes 
+                        </small>
+                        <small *ngIf="photoField.errors?.maxlength" class="p-error">
+                            Exceso de carracteres
+                        </small>
+                    </div>
+                </div>
+                <div class="p-field">
+                    <label for="id">LICENSE:</label>
+                    <input pInputText type="text" id="license" formControlName="license">
+                    <div *ngIf="licenseField.invalid && 
+                        (licenseField.touched ||
+                        licenseField.dirty)">
+                        <small *ngIf="licenseField.errors?.required" class="p-error">
+                            Campo requerido!
+                        </small>
+                        <small *ngIf="licenseField.errors?.minlength" class="p-error">
+                            No cumple con caracteres los suficientes 
+                        </small>
+                        <small *ngIf="licenseField.errors?.maxlength" class="p-error">
+                            Exceso de carracteres
+                        </small>
+                    </div>
+                </div>
+                <div class="p-field">
+                   <button pButton type="submit" label="Guardar" icon="pi pi-save" ></button>
+                </div>
+            </form>
+        </div>
+    </ng-template>
+</p-card><button pButton type="button" label="Click" ></button>
